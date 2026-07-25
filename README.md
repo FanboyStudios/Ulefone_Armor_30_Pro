@@ -1,4 +1,3 @@
-
 # Ulefone Armor 30 Pro
 
 
@@ -15,7 +14,7 @@
 
 
 ### Guides:
-* Flashing GSI ROMS
+* [Flashing GSI ROMS](https://github.com/FanboyStudios/Ulefone_Armor_30_Pro/blob/main/Flashing_GSI_ROMS.md)
 * Additional GSI Configuration *(not available yet)*
 * Flashing Custom ROMs *(not available yet)*
 * Flashing Custom Recovery/TWRP *(not available yet)*
