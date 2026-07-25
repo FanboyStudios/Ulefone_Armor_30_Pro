@@ -61,7 +61,7 @@ Navigate to the directory of your extracted stock firmware.
 
 *You can place your downloaded GSI ROM in this directory. Just don't rename the GSI ROM to the name of a stock system file, nor rename any of the stock firmware files.*
 
-***Make sure you have backed up any data that you want to keep before proceeding to step 6.***
+***Make sure you have backed up any data that you want to keep before proceeding to step 6. Anytime you unlock the bootloader, your device gets wiped.***
 
 6. The commands below provide all the commands for flashing the GSI ROM. 
 
