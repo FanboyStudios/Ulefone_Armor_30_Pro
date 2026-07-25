@@ -6,7 +6,10 @@
 
 
 
-The guide below gives you some of the steps needed to flash Magisk Root to the Ulefone Armor 30 Pro. This guide assumes you're on stock firmware..
+The guide below gives you some of the steps needed to flash Magisk Root to the Ulefone Armor 30 Pro. 
+
+This guide assumes you're on stock firmware, but the steps are similar for rooting a GSI ROM. 
+If you're already on a GSI ROM, you can start from step 5.
 
 Note: I may provide the firmware for the Ulefone Armor 30 Pro later, but I'll have to find a good, reliable place to upload it to for y'all. 
 I've had terrible experiences with Mega.NZ. They love screwing people over with all sorts of limitations, so any firmware uploaded there may not be a reliable source for years to come. 
