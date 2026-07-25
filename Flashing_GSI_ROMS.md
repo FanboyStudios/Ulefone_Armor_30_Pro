@@ -18,6 +18,8 @@ When looking for GSI ROMs, look for ones that are ARM64 A/B Partition Style. You
 
 The guide below gives you some of the steps needed to flash a GSI ROM to the Ulefone Armor 30 Pro. Note: this guide is not entirely complete. It's enough to get a GSI ROM running on the device, but any additional configuration (such as to get all the non-working features working if it's possible) is not something I found yet, nor have instructions for.
 
+This guide assumes you are running the Stock OS.
+
 Note: I may provide the firmware for the Ulefone Armor 30 Pro later, but I'll have to find a good, reliable place to upload it to for y'all. 
 I've had terrible experiences with Mega.NZ. They love screwing people over with all sorts of limitations, so any firmware uploaded there may not be a reliable source for years to come. 
 Anyone wanting to share their firmware files should probably consider other cloud storage options. 
@@ -27,19 +29,53 @@ It's too bad Ulefone decided to just delete all their firmware from their site. 
 
 ## The Guide
 
-You will need to enable developer mode (tap the build number several times quickly in settings) and enable the ability to unlock the bootloader.
+
+
+
+1. Enable Developer Options. Go to Settings > About Device. Tap the Build Number quickly serveral times until you see a popup saying you're a developer.
+
+2. Open Developer Options. Go to System > Developer Options. Enable USB Debugging (this enables usage of ADB) and OEM Unlocking (the enables the ability to unlock the bootloader).
+
+3. Download the Android Platform Tools on your PC.
 
 I'd recommend using platform-tools_r34.0.4 on Windows for adb/fastboot. Newer builds have some bugs that cause some commands to give errors.
 
 [https://dl.google.com/android/repository/platform-tools_r34.0.4-windows.zip](https://dl.google.com/android/repository/platform-tools_r34.0.4-windows.zip)
 
-You will need some files from your stock firmware to flash a GSI ROM, or vb-meta/dm-verity will put your phone into a bootload. Of course you will also need your stock firmware for your device, in case things go wrong or you decide to return to stock anyway. Again, I may provide a link for these later... but if you have the stock firmware you may proceed.
+Extract the platform tools and place them in C:\Windows.
 
-Substitute "RestlessOS-arm64-ab-16.0.0-202606230923.img" as needed for your particular GSI ROM.
+4. Download the Stock Firmware for your phone. Extract it somewhere safe, you can use PeaZip or 7zip for this.
 
-The codeblocks below provide all the commands for flashing the GSI ROM.
+You will need some files (namely vbmeta.img, vbmeta_system.img, and vbmeta_vendor.img) from your stock firmware to flash a GSI ROM. This is for disabling "dm-verity" to prevent a bootloop/softbrick.
+
+*Of course you will also need your stock firmware for your device, in case things go wrong or you decide to return to stock anyway. 
+Again, I may provide a link for these later... but if you have the stock firmware you may proceed.*
+
+5. Run the following commands in "Command Prompt" on your PC.
+
+*Use the "cd" command to navigate to the proper directory in command prompt. The below command is just an example.* 
+
+`cd C:\Users\Your Username Here\Downloads\A700A5TA_VOTA.GQU.Ulefone.HB.FHJ.LVQGZ1LWQL.20260129.V3.03`
+
+Navigate to the directory of your extracted stock firmware. 
+
+*You can place your downloaded GSI ROM in this directory. Just don't rename the GSI ROM to the name of a stock system file, nor rename any of the stock firmware files.*
+
+***Make sure you have backed up any data that you want to keep before proceeding to step 6.***
+
+6. The commands below provide all the commands for flashing the GSI ROM. 
+
+Plug your phone into the PC; and execute the following commands in order to unlock your bootloader, disable dm-verity, flash the GSI ROM, and reboot. Accept the ADB prompt if it pops up.
+
+*This command reboots your phone into the bootloader.*
+
+`adb reboot bootloader`
+
+*The next command will only give you a few seconds to hit the proper button to proceed to unlock the bootloader. So pay attention and hit the proper button, or your bootloader will not be unlocked.*
 
 `fastboot flashing unlock`
+
+*If the bootloader unlocked successfully, you'll be able to flash the files in the following commands to disable dm-verity.*
 
 `fastboot --disable-verity --disable-verification flash vbmeta_a vbmeta.img`
 
@@ -53,11 +89,17 @@ The codeblocks below provide all the commands for flashing the GSI ROM.
 
 `fastboot --disable-verity --disable-verification flash vbmeta_vendor_b vbmeta_vendor.img`
 
+*The next command reboots your phone into "fastbootd mode", which is different from regular fastboot. If you see "fastbootd" at the top of your phone screen, that's good!*
+
 `fastboot reboot fastboot`
+
+*The next two commands prepare your DSU (Dynamic System Update) Partitions for flashing the GSI ROMs.*
 
 `fastboot delete-logical-partition product_a`
 
 `fastboot delete-logical-partition product_b`
+
+*The next 4 commands flashes your GSI ROM, wipes user data (which is required), and reboots your phone. Substitute the "RestlessOS-arm64-ab-16.0.0-202606230923.img" as needed for your particular GSI ROM.*
 
 `fastboot flash system_a RestlessOS-arm64-ab-16.0.0-202606230923.img`
 
@@ -67,9 +109,11 @@ The codeblocks below provide all the commands for flashing the GSI ROM.
 
 `fastboot reboot`
 
+If successful, you will now be running a GSI ROM! The first boot may take a little while to boot, but subsequent boots will probably be faster.
 
 
-### What does not work:
+
+### What does not work on the two GSI ROMs I tested:
 
 - The 2 Extra Hardware Shortcut Buttons
 
