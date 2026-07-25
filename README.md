@@ -13,6 +13,16 @@
 
 
 
+## Google is destroying Android! 
+
+Your phone is about to stop being yours.
+
+https://keepandroidopen.org
+
+*This is part of why I'm creating these guides.*
+
+
+
 ### Guides:
 * [Flashing GSI ROMS](https://github.com/FanboyStudios/Ulefone_Armor_30_Pro/blob/main/Flashing_GSI_ROMS.md)
 
