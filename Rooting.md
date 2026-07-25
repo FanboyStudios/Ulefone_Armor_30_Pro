@@ -50,7 +50,7 @@ Again, I may provide a link for these later... but if you have the stock firmwar
 *It will have a different name with "magisk" in it, but you can rename it after you copy it.* 
 *For example: renaming it to "UlefoneArmor30Pro-MagiskPatched-Stock-init_boot.img" (without quotations) might be a good idea; to help you keep track of it, if you have multiple devices/several boot images.*
 
-**Make sure you have backed up any data that you want to keep before proceeding to step 9.**
+***Make sure you have backed up any data that you want to keep before proceeding to step 9. Anytime you unlock the bootloader, your device gets wiped.***
 
 9. Run the following commands in "Command Prompt" on your PC, accepting the ADB prompt if it shows up. 
 
