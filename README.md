@@ -26,7 +26,7 @@
 
 * Stock ROM Debloating *(not available yet - in the works)*
 
-* Rooting *(not available yet)*
+* [Rooting](https://github.com/FanboyStudios/Ulefone_Armor_30_Pro/blob/main/Rooting.md)
 
 
 
